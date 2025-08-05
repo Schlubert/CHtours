@@ -1,0 +1,73 @@
+import React, { useState } from 'react';
+import NavLink from './NavLink'; // Import NavLink component
+
+function Navbar({ setCurrentPage }) {
+  // State for mobile menu visibility
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <nav className="bg-white shadow-lg py-4 px-4 sm:px-6 lg:px-8 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        {/* Logo/Brand Name */}
+        <div className="flex-shrink-0">
+          <a href="#" onClick={() => setCurrentPage('home')} className="text-[#D71F0F] text-3xl font-bold rounded-md px-3 py-2 transition duration-300 ease-in-out hover:text-[#8F1409]">
+            Gilbert Swiss Tours
+          </a>
+        </div>
+
+        {/* Desktop Navigation Links - Always horizontal */}
+        <div className="hidden md:flex space-x-8">
+          <NavLink text="Home" page="home" setCurrentPage={setCurrentPage} />
+          <div className="relative group">
+            <button className="text-gray-800 hover:text-[#D71F0F] px-3 py-2 rounded-md text-lg font-medium transition duration-300 ease-in-out focus:outline-none">
+              Tours
+            </button>
+            <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 w-48 py-2">
+              <NavLink text="Alpine Adventures" page="alpine-adventures" setCurrentPage={setCurrentPage} isDropdown />
+              <NavLink text="Lakes & Valleys" page="lakes-valleys" setCurrentPage={setCurrentPage} isDropdown />
+              <NavLink text="Historic Trails" page="historic-trails" setCurrentPage={setCurrentPage} isDropdown />
+            </div>
+          </div>
+          <NavLink text="FAQs" page="faqs" setCurrentPage={setCurrentPage} />
+          <NavLink text="Contact Us" page="contact" setCurrentPage={setCurrentPage} />
+          <NavLink text="About Us" page="about" setCurrentPage={setCurrentPage} />
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-gray-800 hover:text-[#D71F0F] focus:outline-none focus:text-[#D71F0F]"
+          >
+            <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {isOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu - Stacks vertically when open */}
+      {isOpen && (
+        <div className="md:hidden mt-4 flex flex-col items-center">
+          <NavLink text="Home" page="home" setCurrentPage={setCurrentPage} setIsOpen={setIsOpen} />
+          <div className="border-t border-gray-200 mt-2 pt-2 w-full text-center">
+            <span className="block text-gray-600 px-3 py-2 text-sm font-semibold">Tours</span>
+            <NavLink text="Alpine Adventures" page="alpine-adventures" setCurrentPage={setCurrentPage} setIsOpen={setIsOpen} isMobileDropdown />
+            <NavLink text="Lakes & Valleys" page="lakes-valleys" setCurrentPage={setCurrentPage} setIsOpen={setIsOpen} isMobileDropdown />
+            <NavLink text="Historic Trails" page="historic-trails" setCurrentPage={setCurrentPage} setIsOpen={setIsOpen} isMobileDropdown />
+          </div>
+          <NavLink text="FAQs" page="faqs" setCurrentPage={setCurrentPage} setIsOpen={setIsOpen} />
+          <NavLink text="Contact Us" page="contact" setCurrentPage={setCurrentPage} setIsOpen={setIsOpen} />
+          <NavLink text="About Us" page="about" setCurrentPage={setCurrentPage} setIsOpen={setIsOpen} />
+        </div>
+      )}
+    </nav>
+  );
+}
+
+export default Navbar;
+    

@@ -1,0 +1,48 @@
+import React from 'react';
+
+function TourPage({ title, description, image, itinerary }) {
+  return (
+    <div className="min-h-screen pt-20 pb-10 px-4 sm:px-6 lg:px-8 bg-gray-50 text-gray-800">
+      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-xl p-8 lg:p-12">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-[#D71F0F] mb-6 text-center">{title}</h1>
+
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-64 sm:h-80 md:h-96 object-cover rounded-lg mb-8 shadow-md"
+        />
+
+        <p className="text-lg leading-relaxed mb-8 text-center sm:text-left">
+          {description}
+        </p>
+
+        <div className="mb-10">
+          <h2 className="text-3xl font-bold text-[#D71F0F] mb-6 border-b-2 border-[#F5A19B] pb-2">Itinerary Highlights</h2>
+          <ul className="space-y-4">
+            {itinerary.map((item, index) => (
+              <li key={index} className="flex items-start text-lg">
+                <svg className="h-6 w-6 text-[#E04B3E] mr-3 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-[#D71F0F] mb-4">Ready to Book Your Adventure?</h2>
+          <p className="text-lg mb-6">Contact us to customize this tour or inquire about availability.</p>
+          <button
+            onClick={() => window.location.hash = '#contact'} // Simple hash-based navigation for internal links
+            className="bg-[#D71F0F] text-white px-8 py-4 rounded-full text-xl font-semibold shadow-lg hover:bg-[#B31A0C] transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            Inquire Now
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default TourPage;

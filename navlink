@@ -1,0 +1,31 @@
+import React from 'react';
+
+function NavLink({ text, page, setCurrentPage, setIsOpen, isDropdown = false, isMobileDropdown = false }) {
+  const handleClick = () => {
+    setCurrentPage(page);
+    if (setIsOpen) setIsOpen(false); // Close mobile menu on click
+  };
+
+  const baseClasses = "block text-lg font-medium transition duration-300 ease-in-out rounded-md";
+  const desktopClasses = "text-gray-800 hover:text-[#D71F0F] px-3 py-2";
+  const dropdownClasses = "text-gray-800 hover:bg-[#FCE7E6] hover:text-[#D71F0F] px-4 py-2 text-base";
+  const mobileClasses = "text-gray-800 hover:bg-[#FCE7E6] hover:text-[#D71F0F] px-3 py-2";
+
+  let classes = baseClasses;
+  if (isDropdown) {
+    classes += ` ${dropdownClasses}`;
+  } else if (isMobileDropdown) {
+    classes += ` ${mobileClasses} pl-6`; // Indent dropdown items in mobile
+  }
+  else {
+    classes += ` ${desktopClasses}`;
+  }
+
+  return (
+    <a href="#" onClick={handleClick} className={classes}>
+      {text}
+    </a>
+  );
+}
+
+export default NavLink;

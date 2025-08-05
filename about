@@ -1,0 +1,55 @@
+import React from 'react';
+
+function AboutPage() {
+  return (
+    <div className="min-h-screen pt-20 pb-10 px-4 sm:px-6 lg:px-8 bg-gray-50 text-gray-800">
+      <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-xl p-8 lg:p-12">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-[#D71F0F] mb-8 text-center">About Kevin & Esther Gilbert</h1>
+
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-12">
+          <div className="flex-shrink-0">
+            <img
+              src="https://placehold.co/300x300/D71F0F/FFFFFF?text=Kevin+%26+Esther"
+              alt="Kevin and Esther Gilbert"
+              className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-[#F9C4C1]"
+            />
+          </div>
+          <div className="text-center md:text-left">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Story: A Passion for Swiss Travel</h2>
+            <p className="text-lg leading-relaxed text-gray-700 mb-4">
+              Welcome to Gilbert Swiss Tours! We are Kevin and Esther Gilbert, the proud founders and passionate guides behind your next Swiss adventure. Our journey into the world of travel began many years ago, fueled by a shared love for exploration and a particular enchantment with the stunning landscapes and rich culture of Switzerland.
+            </p>
+            <p className="text-lg leading-relaxed text-gray-700">
+              Over countless trips, we've explored every corner of this magnificent country, from the snow-capped peaks of the Alps to the serene shores of its pristine lakes, and the charming cobblestone streets of its historic towns. Each visit deepened our appreciation for Switzerland's unique blend of natural beauty, precision, and warm hospitality.
+            </p>
+          </div>
+        </div>
+
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-[#D71F0F] mb-6 border-b-2 border-[#F5A19B] pb-2 text-center">Our Philosophy</h2>
+          <p className="text-lg leading-relaxed text-gray-700 mb-4">
+            At Gilbert Swiss Tours, our philosophy is simple: to share the magic of Switzerland with you through meticulously crafted, personalized experiences. We believe that travel should be more than just seeing sights; it should be about immersing yourself in a destination, connecting with its essence, and creating memories that last a lifetime.
+          </p>
+          <p className="text-lg leading-relaxed text-gray-700">
+            We handpick every element of our tours, from comfortable accommodations to authentic local experiences, ensuring that every detail contributes to an unforgettable journey. Our small group sizes allow for flexibility, personal attention, and the opportunity to truly connect with the places and people you encounter.
+          </p>
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-[#D71F0F] mb-6 border-b-2 border-[#F5A19B] pb-2">Join Us on an Adventure</h2>
+          <p className="text-lg leading-relaxed text-gray-700 mb-8">
+            Whether you dream of hiking majestic mountains, cruising on tranquil lakes, or exploring centuries of history, we invite you to join us. Let Kevin and Esther Gilbert guide you through the wonders of Switzerland, sharing our favorite hidden gems and ensuring your trip is nothing short of extraordinary.
+          </p>
+          <button
+            onClick={() => window.location.hash = '#contact'}
+            className="bg-[#D71F0F] text-white px-8 py-4 rounded-full text-xl font-semibold shadow-lg hover:bg-[#B31A0C] transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            Start Your Swiss Journey
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default AboutPage;

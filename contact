@@ -1,0 +1,118 @@
+import React, { useState } from 'react';
+
+function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [statusMessage, setStatusMessage] = useState('');
+  const [isError, setIsError] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setStatusMessage('Please fill in all fields.');
+      setIsError(true);
+      return;
+    }
+
+    // Simulate form submission
+    console.log('Form Data Submitted:', formData);
+    setStatusMessage('Thank you for your message! We will get back to you shortly.');
+    setIsError(false);
+    setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
+  };
+
+  return (
+    <div className="min-h-screen pt-20 pb-10 px-4 sm:px-6 lg:px-8 bg-gray-50 text-gray-800">
+      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-xl p-8 lg:p-12">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-[#D71F0F] mb-8 text-center">Contact Us</h1>
+        <p className="text-lg text-center mb-10">
+          Have questions about our tours or need a custom itinerary? We'd love to hear from you!
+        </p>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="name" className="block text-lg font-medium text-gray-900 mb-2">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#D71F0F] focus:border-[#D71F0F] text-lg"
+              placeholder="John Doe"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-lg font-medium text-gray-900 mb-2">Your Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#D71F0F] focus:border-[#D71F0F] text-lg"
+              placeholder="john.doe@example.com"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="subject" className="block text-lg font-medium text-gray-900 mb-2">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#D71F0F] focus:border-[#D71F0F] text-lg"
+              placeholder="Tour Inquiry, Custom Trip, etc."
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-lg font-medium text-gray-900 mb-2">Your Message</label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows="6"
+              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#D71F0F] focus:border-[#D71F0F] text-lg"
+              placeholder="Tell us about your travel plans..."
+              required
+            ></textarea>
+          </div>
+          <div className="text-center">
+            <button
+              type="submit"
+              className="bg-[#D71F0F] text-white px-8 py-4 rounded-full text-xl font-semibold shadow-lg hover:bg-[#B31A0C] transition duration-300 ease-in-out transform hover:scale-105"
+            >
+              Send Message
+            </button>
+          </div>
+          {statusMessage && (
+            <div className={`mt-6 p-4 rounded-md text-center ${isError ? 'bg-[#FCE7E6] text-[#D71F0F]' : 'bg-green-100 text-green-700'}`}>
+              <p className="font-medium">{statusMessage}</p>
+            </div>
+          )}
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default ContactPage;
+

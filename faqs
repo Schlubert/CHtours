@@ -1,0 +1,53 @@
+import React from 'react';
+
+function FaqPage() {
+  const faqs = [
+    {
+      question: "What is included in the tour price?",
+      answer: "Our tour prices typically include accommodation, most meals, transportation within Switzerland (trains, buses, boats), guided excursions, and entrance fees to specified attractions. Please refer to the specific tour itinerary for detailed inclusions."
+    },
+    {
+      question: "Are flights to Switzerland included?",
+      answer: "No, international flights to and from Switzerland are generally not included in our tour packages. We recommend booking your flights separately to best suit your travel preferences."
+    },
+    {
+      question: "What is the best time to visit Switzerland?",
+      answer: "Switzerland is beautiful year-round! Summer (June-August) is ideal for hiking and outdoor activities. Spring (April-May) and Autumn (September-October) offer pleasant weather and fewer crowds. Winter (December-March) is perfect for skiing and festive markets."
+    },
+    {
+      question: "What kind of accommodation can I expect?",
+      answer: "We partner with high-quality hotels and charming guesthouses that offer comfort and authentic Swiss experiences. Accommodation details are provided in each tour's specific itinerary."
+    },
+    {
+      question: "Do I need a visa to visit Switzerland?",
+      answer: "Visa requirements depend on your nationality. Switzerland is part of the Schengen Area. Please check the latest visa regulations for your country of origin before planning your trip."
+    },
+    {
+      question: "What currency is used in Switzerland?",
+      answer: "The official currency of Switzerland is the Swiss Franc (CHF). Euros are sometimes accepted in tourist areas, but change will usually be given in CHF."
+    },
+    {
+      question: "What should I pack for a Swiss tour?",
+      answer: "Layered clothing is highly recommended, as weather can change quickly, especially in the mountains. Comfortable walking shoes, rain gear, sun protection, and a camera are essential. For winter tours, warm winter clothing is a must."
+    }
+  ];
+
+  return (
+    <div className="min-h-screen pt-20 pb-10 px-4 sm:px-6 lg:px-8 bg-gray-50 text-gray-800">
+      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl p-8 lg:p-12">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-[#D71F0F] mb-8 text-center">Frequently Asked Questions</h1>
+        <div className="space-y-6">
+          {faqs.map((faq, index) => (
+            <div key={index} className="border-b border-gray-200 pb-4 last:border-b-0">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-2">{faq.question}</h2>
+              <p className="text-lg leading-relaxed text-gray-700">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default FaqPage;
+
